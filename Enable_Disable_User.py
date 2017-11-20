@@ -16,7 +16,7 @@ def user_exists():
 # unicode.
 # From https://stackoverflow.com/questions/19672352/how-to-run-python-script-
 # with-elevated-privilege-on-windows
-def check_admin_privilages():
+def check_admin_privileges():
 	success = 32
 	shell32 = ctypes.windll.shell32
 	if shell32.IsUserAnAdmin():
@@ -39,7 +39,7 @@ def check_admin_privilages():
 
 if __name__ == '__main__':
     if user_exists():
-        ret = check_admin_privilages()
+        ret = check_admin_privileges()
         if ret is True:
 	    enable = str()
 		    # Make sure user types correct input
@@ -47,4 +47,4 @@ if __name__ == '__main__':
                 enable = raw_input('"Guest" enable: yes/no\n\r')
             sp.call('net user Guest /active:%s' % (enable), shell=True)
         else:
-            print 'Error(ret=%d): cannot elevate privilages.' % (ret, )
+            print 'Error(ret=%d): cannot elevate privileges.' % (ret, )
