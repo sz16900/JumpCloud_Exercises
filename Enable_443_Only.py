@@ -3,15 +3,9 @@
 	# drop all connections except the https/443 incoming.
 	# This, however, does not allow for a two-way communication and hence cannot open a 
 	# simple https page like www.google.com
-	# Yet, in order to have a two way communication to open an https website, one can do 
-	# the following:
-		# /sbin/iptables -F
-		# /sbin/iptables -A INPUT -p tcp --dport 443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
-		# /sbin/iptables -A INPUT -m conntrack -j ACCEPT  --ctstate RELATED,ESTABLISHED
-		# /sbin/iptables -A INPUT -j DROP
-		# /sbin/iptables -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
-		# /sbin/iptables -A FORWARD -j DROP
-	# The above will allow a two way https/443 only connection.
+	# Yet, in order to have a two way communication to open an https website, one can try  
+	# to run the following script:
+		# https://github.com/sz16900/Network/blob/master/firewall_443_only_two-way.py
 
 import sys, os, subprocess as sp
 
